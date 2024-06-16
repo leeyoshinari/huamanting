@@ -1,0 +1,154 @@
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-weight: normal;
+    font-style: normal;
+    /*font-size: 14px;*/
+    line-height: 1.5;
+    font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft YaHei", sans-serif;
+    color: #333;
+    background-color: #fff;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+/***************************header start********************************/
+header {
+    width: 100%;
+    overflow: hidden;
+}
+
+.nav {
+    width: 100%;
+    background-color: #333;
+}
+
+.navCenter {
+    width: 100%;
+    /*height: 40px;*/
+    line-height: 40px;
+    margin: 0 auto;
+}
+
+.navCenter h2 {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+/***************************header end********************************/
+/***************************mainbody start********************************/
+.mainbody {
+    width: 100%;
+    /* padding-top: 60px; */
+    background-color: #f5f5f5;
+}
+
+.peripheral {
+    height: 686px;
+    width: 100%;
+    margin: 0 auto 22px;
+}
+
+.title p {
+    width: 89px;
+    height: 58px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 16px;
+    line-height: 58px;
+    color: #424242;
+    transition: all .4s;
+    cursor: pointer;
+}
+
+.title p:hover {
+    color: #ff6700;
+}
+
+.title p:hover i {
+    color: #ff6700;
+}
+
+.title {
+    width: 96%;
+    height: 58px;
+    margin-left: 2%;
+    position: relative;
+}
+
+.title h2 {
+    font-size: 22px;
+    font-weight: 200;
+    line-height: 58px;
+    margin-right: 2%;
+    float: left;
+}
+
+.detail {
+    width: 100%;
+    float: left;
+}
+
+.detail li {
+    width: 96%;
+    /*height: 50px;*/
+    margin-left: 2%;
+    margin-bottom: 12px;
+    padding: 12px 15px 12px 0;
+    box-sizing: border-box;
+    /*text-align: center;*/
+    position: relative;
+    float: left;
+    background-color: #fff;
+    transition: all .2s linear;
+}
+
+.detail li span {
+    width: 150px;
+    float: left;
+}
+
+.detail li h3 {
+    width: 70%;
+    overflow: hidden;
+    white-space: nowrap;
+    word-break: keep-all;
+    text-overflow: ellipsis;
+}
+.detail a {
+    color: #4c4c4c;
+}
+
+.showNone {
+    display: none;
+}
+
+.showBlock {
+    display: block;
+}
+/***************************mainbody end********************************/
+/***************************footer start********************************/
+footer {width: 100%;}
+
+.slogan {
+    width: 100%;
+    color: #d30202;
+    text-align: center;
+    margin: 0 auto;
+}
+.slogan div {
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 1%;
+}
+/***************************footer end********************************/
