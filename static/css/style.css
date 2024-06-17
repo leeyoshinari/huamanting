@@ -86,6 +86,7 @@ header {
 }
 
 .title h2 {
+    color: blue;
     font-size: 22px;
     font-weight: 200;
     line-height: 58px;
