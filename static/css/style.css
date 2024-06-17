@@ -53,7 +53,6 @@ header {
 }
 
 .peripheral {
-    height: 686px;
     width: 100%;
     margin: 0 auto 22px;
 }
@@ -124,6 +123,11 @@ header {
     white-space: nowrap;
     word-break: keep-all;
     text-overflow: ellipsis;
+}
+
+.detail li img {
+    margin-left: 150px;
+    height: 500px;
 }
 .detail a {
     color: #4c4c4c;
