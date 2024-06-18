@@ -4,16 +4,21 @@
     <meta charset="UTF-8"> 
     <title>小区是我们的家</title>
     <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/viewer.min.css">
+    <script src="/static/css/viewer.min.js"></script>
 </head>
 <body>
 <div class="mainbody">
     <div class="peripheral">
         <ul class="detail">
-            <li><div><span>2023-03</span><h3>小区大门出口被商贩占用，物业不管不顾</h3><img src="/static/202306/202303-1.jpg" alt=""></div></li>
-            <li><div><span>2023-03</span><h3>小区外商铺存放大量煤气罐，严重威胁小区业主安全，物业信口雌黄、欺瞒业主</h3><img src="/static/202306/202303-2.jpg" alt=""></div></li>
-            <li><div><span>2023-01-19</span><h3>未恢复小区植被</h3><img src="/static/202306/20230829-1.jpg" alt=""></div></li>
+            <li><div><span>2023-03</span><h4>小区大门出口被商贩占用，物业不管不顾</h4><img class="my_video" style="object-fit: contain;" src="/static/202306/202303-1.jpg" alt=""></div></li>
+            <li><div><span>2023-03</span><h4>小区外商铺存放大量煤气罐，严重威胁小区业主安全，物业信口雌黄、欺瞒业主</h4><img class="my_video" style="object-fit: contain;" src="/static/202306/202303-2.jpg" alt=""></div></li>
+            <li><div><span>2023-01-19</span><h4>未恢复小区植被</h4><img class="my_video" style="object-fit: contain;" src="/static/202306/20130119-1.jpg" alt=""></div></li>
         </ul>
     </div>
 </div>
 </body>
+<script type="text/javascript">
+    document.querySelectorAll('.my_video').forEach(ele => {new Viewer(ele, {viewed() {},});})
+</script>
 </html>

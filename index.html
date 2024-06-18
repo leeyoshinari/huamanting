@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"> 
-    <title>小区是我们的家</title>
+    <title>融科·花满庭</title>
     <link rel="stylesheet" href="static/css/style.css">
 </head>
 <body>
@@ -13,6 +13,9 @@
         </div>
     </div>
 </header>
+<div><input type="file" id="fileUpload-input" multiple style="display: none">
+    <button onclick="upload_file()">请各位邻居点这里上传图片等文件，我会收集并统一展示</button>
+</div>
 <div class="mainbody">
     <div class="peripheral">
         <div class="title">
@@ -22,6 +25,9 @@
             <!-- <h2 style="cursor: pointer" onclick="showList('2')">武汉留言板</h2> -->
         </div>
         <ul class="detail">
+            <!--li lang="1"><div><span>2024-06</span><h3><a href="/template/202406.html" target="_blank">物业经理明确说明应付业主</a></h3></div></li-->
+            <li lang="1"><div><span>2024-05</span><h3><a href="/template/202405.html" target="_blank">物业管家承认楼栋内卫生做的不好</a></h3></div></li>
+            <li lang="1"><div><span>2023-12</span><h3><a href="/template/202312.html" target="_blank">小区外摊贩仍在小区路边摆摊，影响业主出行</a></h3></div></li>
             <li lang="1"><div><span>2023-09</span><h3><a href="/template/202309.html" target="_blank">丽岛物业未全心全意服务融科花满庭小区全体业主</a></h3></div></li>
             <li lang="1"><div><span>2023-08</span><h3><a href="/template/202308.html" target="_blank">物业工作联系函，吃相很难看</a></h3></div></li>
             <!-- <li lang="1"><div><span>2023-08-29</span><h3><a href="http://liuyan.cjn.cn/fiveblockviewxq?tid=2630407" target="_blank">花满庭小区门口商贩占道经营严重影响小区出行有安全隐患</a></h3></div></li>
@@ -35,6 +41,8 @@
         </ul>
     </div>
 </div>
+<div class="spinner-container"><div class="spinner"></div></div>
+<div id="tips" class="tips"></div>
 <footer>
     <div class="slogan">
         <!--div>
@@ -64,6 +72,74 @@
             }
         }
         peripheral.style.height = counter + peripheral.getElementsByClassName('title')[0].clientHeight + 'px';
+    }
+
+    var showTips = (text) => {
+        var tips = document.getElementById('tips');
+        tips.innerText = text;
+        tips.classList.add('show');
+        setTimeout(() => {tips.classList.remove('show');}, 3000);
+    }
+
+    function upload_file() {
+        let fileUpload_input = document.getElementById("fileUpload-input");
+        fileUpload_input.click();
+        fileUpload_input.onchange = function (event) {
+            document.getElementsByClassName("spinner-container")[0].style.display = 'flex';
+            let files = event.target.files;
+            let total_files = files.length;
+            if (total_files < 1) {
+                document.getElementsByClassName("spinner-container")[0].style.display = 'none';
+                return;
+            }
+            let success_num = 0;
+            let failure_num = 0;
+            let failure_file = [];
+
+            for (let i=0; i<total_files; i++) {
+                let form_data = new FormData();
+                form_data.append("file", files[i]);
+                form_data.append("index", i + 1);
+                form_data.append("total", total_files);
+
+                let xhr = new XMLHttpRequest();
+                xhr.open("POST", "https://wh.ihuster.top/file/upload");
+                xhr.setRequestHeader("processData", "false");
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4) {
+                        if(xhr.status === 200) {
+                            let res = JSON.parse(xhr.responseText);
+                            if (res['code'] === 0) {
+                                success_num += 1;
+                            } else if (res['code'] === 2) {
+                                showTips(res['msg']);
+                                fileUpload_input.value = '';
+                                document.getElementsByClassName("spinner-container")[0].style.display = 'none';
+                            }else {
+                                failure_num += 1;
+                                failure_file.push(res['data']);
+                            }
+                        }
+                        if ((success_num + failure_num) === total_files) {
+                            let msg = "";
+                            let level = "success";
+                            if (success_num > 0) {
+                                msg += success_num + "个文件上传成功";
+                            }
+                            if (failure_num > 0) {
+                                if (msg.length > 0) {msg += '，';}
+                                msg += failure_num + "个文件上传失败";
+                                level = "error";
+                            }
+                            showTips(msg);
+                            fileUpload_input.value = '';
+                            document.getElementsByClassName("spinner-container")[0].style.display = 'none';
+                        }
+                    }
+                }
+                xhr.send(form_data);
+            }
+        }
     }
 </script>
 </html>

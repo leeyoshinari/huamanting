@@ -4,17 +4,22 @@
     <meta charset="UTF-8"> 
     <title>小区是我们的家</title>
     <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/viewer.min.css">
+    <script src="/static/css/viewer.min.js"></script>
 </head>
 <body>
 <div class="mainbody">
     <div class="peripheral">
         <ul class="detail">
-            <li><div><span>2023-08-29</span><h3>物业工作联系函，吃相很难看</h3><img src="/static/202308/20230829-1.jpg" alt=""></div></li>
-            <li><div><span>2023-08-23</span><h3>小区地下车库漏水、垃圾长期堆放不处理</h3><img src="/static/202308/20230823-1.jpg" alt=""></div></li>
-            <li><div><span>2023-08</span><h3>小区路面不修复，或修复未复原</h3><img src="/static/202308/202308-1.jpg" alt=""></div></li>
-            <li><div><span>2023-08</span><h3>小区环境脏乱差，物业灭蚊纯属作秀，没有任何效果</h3><img src="/static/202308/202308-2.jpg" alt=""></div></li>
+            <li><div><span>2023-08-29</span><h4>物业工作联系函，吃相很难看</h4><img class="my_video" style="object-fit: contain;" src="/static/202308/20230829-1.jpg" alt=""></div></li>
+            <li><div><span>2023-08-23</span><h4>小区地下车库漏水、垃圾长期堆放不处理</h4><img class="my_video" style="object-fit: contain;" src="/static/202308/20230823-1.jpg" alt=""></div></li>
+            <li><div><span>2023-08</span><h4>小区路面不修复，或修复未复原</h4><img class="my_video" style="object-fit: contain;" src="/static/202308/202308-1.jpg" alt=""></div></li>
+            <li><div><span>2023-08</span><h4>小区环境脏乱差，物业灭蚊纯属作秀，没有任何效果</h4><img class="my_video" style="object-fit: contain;" src="/static/202308/202308-2.jpg" alt=""></div></li>
         </ul>
     </div>
 </div>
 </body>
+<script type="text/javascript">
+    document.querySelectorAll('.my_video').forEach(ele => {new Viewer(ele, {viewed() {},});})
+</script>
 </html>
