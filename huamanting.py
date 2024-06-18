@@ -22,6 +22,8 @@ parent_path = os.path.join(path, 'data')
 log_path = os.path.join(path, 'logs')
 if not os.path.exists(log_path):
     os.mkdir(log_path)
+if not os.path.exists(parent_path):
+    os.mkdir(parent_path)
 
 log_level = {
     'DEBUG': logging.DEBUG,
